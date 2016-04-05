@@ -1,0 +1,43 @@
+O algorítimo foi escrito baseado no artigo de  Freeman (1979) e nas informações contidas em https://en.wikipedia.org/wiki/Centrality#Closeness_centrality. O Código foi escrito usando a linguagem de programação python e a biblioteca numérica numpy.
+Foi usada a equação que aparece na figura que pode ser vista em: https://upload.wikimedia.org/math/b/e/9/be90ddd8ead1f4c7e07f1f7b0e4c14ac.png
+
+O numpy pode ser baixado em: http://www.numpy.org/
+
+instalação via pip:
+
+	sudo pip install numpy
+
+Ou para usuários ubuntu:
+
+	sudo apt-get install python-numpy
+
+
+A classe CentralityMetrics contém o método rankedVerticesCloseness que retorna os vértices em ordem decrescente de acordo com a “closeness centrality”.
+
+Para rodar o sistema de rank é preciso rodar o comando
+
+	python centralityMetrics.py
+
+O servidor restful foi escrito usando o framework web2py. 
+Para rodar o servidor basta entrar na pasta web2py e rodar o comando.
+
+	python web2py
+
+em seguida o sistema irá pedir a senha do sistema administrativo, então basta iniciar o servidor.
+Para fazer o get na api acessar no browser:
+	Obter edges registrados no sistema:
+	http://localhost:8000/init/default/api/edges.json
+
+	Obter centrality:
+	http://localhost:8000/init/default/api/centrality.json
+
+se o sistema pedir senha use usuário pereira.somoza@gmail.com senha: 1234
+
+Para fazer um post de novas edges (Via curl):
+
+curl --user pereira.somoza@gmail.com:1234 -d "edge=5,6" http://127.0.0.1:8000/init/default/api/edges.json
+
+Note que a variável edge deve ser escrita como um par ordenado separado por vírgula. 
+References:
+Freeman L. C. Centrality in Social Networks Conceptual Clarification. Social
+Networks. 1979. 1. 215.
