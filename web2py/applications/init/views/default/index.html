@@ -1,0 +1,21 @@
+{{extend 'layout.html'}}
+<script src="{{=URL('static','js/raphael-min.js')}}"></script>
+<script src="{{=URL('static','js/dracula_graffle.js')}}"></script>
+<script src="{{=URL('static','js/dracula_graph.js')}}"></script>
+<script src="{{=URL('static','js/dracula_algorithms.js')}}"></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
+    var width = $(document).width() - 20;
+    var height = $(document).height() - 60;
+    var g = new Graph();
+    g.edgeFactory.template.style.directed = true;
+        {{for edg in edges:}}
+        g.addEdge({{=edg[0]}}, {{=edg[1]}});
+        {{pass}}
+    var layouter = new Graph.Layout.Spring(g);
+    var renderer = new Graph.Renderer.Raphael('canvas', g, width, height);
+});
+</script>
+Rank = {{=rank}}
+<div id="canvas"></div>
+<br>
